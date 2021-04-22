@@ -1,3 +1,22 @@
+// Data
+const database = [
+    { city: ['Bandung', 'Jakarta'], cost: '9000' },
+    { city: ['Bandung', 'Semarang'], cost: '22000' },
+    { city: ['Bandung', 'Surabaya'], cost: '12500' },
+    { city: ['Jakarta', 'Semarang'], cost: '17500' },
+    { city: ['Jakarta', 'Surabaya'], cost: '11000' },
+    { city: ['Semarang', 'Surabaya'], cost: '19000' },
+]
+
+const order = []
+
+const cityList = ['Bandung', 'Jakarta', 'Semarang', 'Surabaya']
+
+let selectorTarif = document.getElementById("checkButton")
+const idAsal = document.getElementById("origin").value
+const idTujuan = document.getElementById("destination").value
+const idBerat = document.getElementById("weight").value
+
 // Function
 function tambahKota(asal, tujuan, tarif) {
     asal = capitalizeWord(asal)
@@ -6,7 +25,6 @@ function tambahKota(asal, tujuan, tarif) {
     const result = database.push({ city: [asal, tujuan].sort(), cost: tarif })
 
     for (let i = 0; i <= cityList.length; i++) {
-        // console.log(cityList[i]);
         if (cityList[i] === asal) {
             break
         } else if (i === cityList.length) {
@@ -100,41 +118,57 @@ function generateCity(data) {
         const option = document.createElement('option')
         option.value = data[i]
         list.appendChild(option);
-        // console.log(data[i])
     }
 }
+
+function generateTarif(asal, tujuan, berat) {
+    const price = cekTarif(asal, tujuan, berat)
+    const origin = capitalizeWord(asal)
+    const destination = capitalizeWord(tujuan)
+
+    // let pokemonName = document.createElement('h1')
+    // pokemonName.innerHTML = data[i].name
+    // pokemonName.addEventListener('click', clickName)
+    // divCard.appendChild(pokemonName)
+
+    const divTable = document.getElementsByClassName('grid-item-table')[0]
+    divTable.innerHTML = ''
+
+    const table = document.createElement('table')
+    // table.addEventListener('click', clickName)
+    divTable.appendChild(table)
+
+    const tableTr = document.createElement('tr')
+    table.appendChild(tableTr)
+
+    let judul = ['Origin', 'Destination', 'Price']
+    for (let i = 0; i < judul.length; i++) {
+        const tableTh = document.createElement('th')
+        tableTh.innerHTML = judul[i]
+        tableTr.appendChild(tableTh)
+    }
+
+    const tableIsi = document.createElement('tr')
+    table.appendChild(tableIsi)
+
+    let isi = [origin, destination, price]
+    for (let i = 0; i < isi.length; i++) {
+        const tableTd = document.createElement('td')
+        tableTd.innerHTML = isi[i]
+        tableIsi.appendChild(tableTd)
+    }
+    document.getElementById('check-our-tarif').addEventListener('click',clickName)
+}
+// generateTarif('Jakarta', 'Surabaya', 3)
 
 function capitalizeWord(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Data
+function clickName(event) {
+    console.log(event.target)
+}
 
-const database = [
-    { city: ['Bandung', 'Jakarta'], cost: '9000' },
-    { city: ['Bandung', 'Semarang'], cost: '22000' },
-    { city: ['Bandung', 'Surabaya'], cost: '12500' },
-    { city: ['Jakarta', 'Semarang'], cost: '17500' },
-    { city: ['Jakarta', 'Surabaya'], cost: '11000' },
-    { city: ['Semarang', 'Surabaya'], cost: '19000' },
-]
-
-const order = []
-
-const cityList = ['Bandung', 'Jakarta', 'Semarang', 'Surabaya']
-
-// DOM
-/* const addCity = document.getElementById('addCity')
-addCity.addEventListener("click", tambahKota)
-
-const removeCity = document.getElementById('removeCity')
-removeCity.addEventListener("click", hapusKota)
-
-const checkRates = document.getElementById('checkRates')
-checkRates.addEventListener("click", cekTarif)
-
-const trackOrder = document.getElementById('trackOrder')
-trackOrder.addEventListener("click", lacakOrder) */
 
 
 // TestCode
@@ -157,8 +191,29 @@ trackOrder.addEventListener("click", lacakOrder) */
     { city: [ 'bekasi', 'Jakarta' ], cost: '15000' },
     { city: [ 'Jakarta', 'tangerang' ], cost: '14000' },
     { city: [ 'Bandung', 'Jakarta' ], cost: '15000' }
-  ] */
+] */
 
 
 // Invoke function
-// generateCity(cityList)
+generateCity(cityList)
+
+
+// console.log(idAsal,idTujuan,idBerat)
+
+// let pokemonName = document.createElement('h1')
+// pokemonName.innerHTML = data[i].name
+// pokemonName.addEventListener('click', clickName)
+// divCard.appendChild(pokemonName)
+
+
+// selectorTarif.onclick = function () { generateTarif(idAsal, idTujuan, idBerat) }
+
+// selectorTarif.addEventListener('click', generateTarif(idAsal,idTujuan,idBerat))
+// selectorTarif.onclick('click', generateTarif(idAsal,idTujuan,idBerat))
+// selectorTarif.addEventListener('click', console.log(idAsal,idTujuan,idBerat))
+
+// document.getElementById("check-our-tarif").addEventListener("click", generateTarif() {
+//     document.getElementById("demo").innerHTML = "Hello World";
+//   });
+
+// event listener cek tarif
