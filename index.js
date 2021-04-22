@@ -3,7 +3,7 @@ function tambahKota(asal, tujuan, tarif) {
     return result
 }
 
-function cekTarif(asal, tujuan, data) {
+function cekTarif(asal, tujuan, berat, data) {
     const kota = [asal, tujuan].sort()
     let tarif = 0
 
@@ -13,12 +13,20 @@ function cekTarif(asal, tujuan, data) {
             break
         }
     }
+    tarif*=berat
     return tarif
 }
 
 
+// kota: bandung, jakarta, semarang, surabaya
 const database = [
-    { kota: ['semarang', 'surabaya'], cost: '15000' }
+    { kota: ['bandung', 'jakarta'], cost: '9000' },
+    { kota: ['bandung', 'semarang'], cost: '19500' },
+    { kota: ['bandung', 'surabaya'], cost: '12500' },
+    { kota: ['jakarta', 'semarang'], cost: '20000' },
+    { kota: ['jakarta', 'surabaya'], cost: '22000' },
+    { kota: ['semarang', 'surabaya'], cost: '19000' },
+
 ]
 
 
@@ -27,10 +35,10 @@ const submitButton = document.getElementById('submit')
 submitButton.addEventListener("click", tambahKota) */
 
 
-tambahKota('bekasi', 'jakarta', '12000')
-tambahKota('jakarta', 'tangerang', '14000')
-tambahKota('jakarta', 'bandung', '15000')
-// console.log(cekTarif('jakarta', 'bekasi', database))
+tambahKota('bekasi', 'jakarta', '8500')
+tambahKota('jakarta', 'tangerang', '8500')
+// tambahKota('jakarta', 'bandung', '9000')
+console.log(cekTarif('jakarta', 'bekasi', 5, database))
 // console.log(database)
 
 
