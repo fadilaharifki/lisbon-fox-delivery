@@ -17,8 +17,19 @@
         <div class="grid-item">
             <div class="grid-item-item">
                 <h3>TARIF KIRIMAN</h3>
-                <input id="box" type="text" name="origin_label" placeholder="Origin" autocomplete="off" aria-required="true">
-                <input id="box" type="text" name="origin_label" placeholder="Destination" autocomplete="off" aria-required="true">
+                    <input id="box" list="browsers" name="browser" placeholder="Origin">
+                    <datalist id="browsers">
+                      <option value="Bandung">
+                      <option value="Jakarta">
+                      <option value="Semarang">
+                    </datalist>
+                    <input id="box" list="browsers" name="browser" placeholder="Destination">
+                    <datalist id="browsers">
+                      <option value="Bandung">
+                      <option value="Jakarta">
+                      <option value="Semarang">
+                      <option value="Surabaya">
+                    </datalist>
                 <input id="box" name="weight" type="text" placeholder="1" style="width:30px; text-align:center" aria-required="true">
                 <button class="button button1" name="check-our-tarif">check</button>
             </div>
