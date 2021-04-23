@@ -125,6 +125,17 @@ function generateTarif(asal, tujuan, berat) {
     const divTable = document.getElementsByClassName('grid-item-table')[0]
     divTable.innerHTML = ''
 
+    if (!price) {
+        const errorMsg = document.createElement('h3')
+        errorMsg.setAttribute("id", "invalidData")
+        errorMsg.innerHTML = 'Mohon masukkan data yang valid'
+        // divTable.appendChild(errorMsg)
+
+        return divTable.appendChild(errorMsg)
+    }
+
+
+
     const table = document.createElement('table')
     divTable.appendChild(table)
 
