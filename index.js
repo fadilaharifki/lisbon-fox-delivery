@@ -1,11 +1,15 @@
 // Data
 const database = [
-    { city: ['Bandung', 'Jakarta'], cost: '9000' },
-    { city: ['Bandung', 'Semarang'], cost: '22000' },
+    { city: ['Bandung', 'Bandung'], cost: '9000' },
+    { city: ['Jakarta', 'Jakarta'], cost: '9000' },
+    { city: ['Semarang', 'Semarang'], cost: '9000' },
+    { city: ['Surabaya', 'Surabaya'], cost: '9000' },
+    { city: ['Bandung', 'Jakarta'], cost: '11000' },
+    { city: ['Jakarta', 'Surabaya'], cost: '11000' },
     { city: ['Bandung', 'Surabaya'], cost: '12500' },
     { city: ['Jakarta', 'Semarang'], cost: '17500' },
-    { city: ['Jakarta', 'Surabaya'], cost: '11000' },
     { city: ['Semarang', 'Surabaya'], cost: '19000' },
+    { city: ['Bandung', 'Semarang'], cost: '22000' },
 ]
 
 const order = []
@@ -16,6 +20,7 @@ const cityList = ['Bandung', 'Jakarta', 'Semarang', 'Surabaya']
 function tambahKota(asal, tujuan, tarif) {
     asal = capitalizeWord(asal)
     tujuan = capitalizeWord(tujuan)
+    console.log(asal,tujuan)
 
     const result = database.push({ city: [asal, tujuan].sort(), cost: tarif })
 
@@ -116,12 +121,15 @@ function generateCity(data) {
     }
 }
 
+    
 function generateTarif(asal, tujuan, berat) {
     const price = cekTarif(asal, tujuan, berat)
     const origin = capitalizeWord(asal)
     const destination = capitalizeWord(tujuan)
     berat = Number(berat)
+    console.log(price,origin,destination)
 
+    // creat table
     const divTable = document.getElementsByClassName('grid-item-table')[0]
     divTable.innerHTML = ''
 
@@ -182,9 +190,80 @@ function capitalizeWord(string) {
 
 
 // Invoke function
-let selectorTarif = document.getElementById("checkButton")
 
-generateCity(cityList)
-selectorTarif.addEventListener('click', function () {
-    generateTarif(document.getElementById("origin").value, document.getElementById("destination").value, document.getElementById("weight").value)
-})
+if(document.getElementById("admin")){
+    let selectorTarif = document.getElementById("Add")
+    let asal = document.getElementById("addOrigin")
+    let tujuan = document.getElementById("addDestination")
+    let harga = document.getElementById("addPrice")
+
+    generateCity(cityList)
+    viewDatabase(database)
+    selectorTarif.addEventListener('click', function () {
+        tambahKota(asal.value, tujuan.value, harga.value)
+        viewDatabase(database)        
+    })
+} 
+
+if(document.getElementById("index")){
+    let selectorTarif = document.getElementById("checkButton")
+    console.log(selectorTarif)
+    let asal = document.getElementById("origin")
+    let tujuan = document.getElementById("destination")
+    let harga = document.getElementById("weight")
+
+    generateCity(cityList)
+    selectorTarif.addEventListener('click', function () {
+        generateTarif(asal.value,tujuan.value,harga.value)
+    })
+}
+
+
+// Js Admin
+function viewDatabase(data){
+    // for (let i = 0; i < data.length; i++){
+    const divTable = document.getElementsByClassName('grid-item-table')[0]
+    divTable.innerHTML = ''
+
+    const table = document.createElement('table')
+    divTable.appendChild(table)
+
+    const tableTr = document.createElement('tr')
+    table.appendChild(tableTr)
+
+    let judul = ['Origin', 'Destination', 'Price']
+    for (let i = 0; i < judul.length; i++) {
+        const tableTh = document.createElement('th')
+        tableTh.innerHTML = judul[i]
+        tableTr.appendChild(tableTh)
+    }
+
+    // const tableIsi = document.createElement('tr')
+    // table.appendChild(tableIsi)
+    
+    let isi = []
+    for(let j=0;j<data.length;j++){
+        let origin = data[j].city[0]
+        let destination = data[j].city[1]
+        let price = data[j].cost
+        isi.push([origin,destination,price])
+        
+    }
+
+    for (let i = 0; i < isi.length; i++) {
+        // for(let k=0;k<isi[i].length;k++){
+            const tableTr = document.createElement('tr')
+            tableTr.innerHTML = `<td>${isi[i][0]}</td>
+            <td>${isi[i][1]}</td>
+            <td>${isi[i][2]}</td>`
+            table.appendChild(tableTr)
+        // }
+    }
+}
+
+
+// let selectorAdd = document.getElementById("number")
+
+// selectorAdd.addEventListener('click', function () {
+//     generateAdd(document.getElementById("origin").value, document.getElementById("destination").value, document.getElementById("weight").value)
+// })

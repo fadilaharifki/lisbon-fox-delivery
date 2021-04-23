@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin lisbon-fox-delivery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <img id="logo" src="img/lisbon-fox-delivery-logo.png">
+        <p id="judul1">kirim cepat tanpa ribet</p>
+    </header>
+    <section>
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="grid-item-item">
+                <h3>TAMBAH KOTA</h3>
+                    <input class="box" list="browsers" name="browser" placeholder="Origin" id="addOrigin">
+                    <datalist id="browsers">
+                      <!-- <option value="Bandung">
+                      <option value="Jakarta"> -->
+                    </datalist>
+                    <input class="box" list="browsers" name="browser" placeholder="Destination" id="addDestination">
+                    <datalist id="browsers">
+                      <!-- <option value="Bandung">
+                      <option value="Jakarta"> -->
+                    </datalist>
+                    <input class="box" type="number" name="browser" placeholder="Price" id="addPrice">
+                <!-- <input class="box" name="weight" type="text" placeholder="1" style="width:30px; text-align:center" aria-required="true" id="weight"> -->
+                <button class="button button1" name="check-our-tarif" id='Add'>Add</button>
+            </div>
+        </div>
+        <!-- <div class="grid-item">
+            <div class="grid-item-item"> 
+                <h3>LACAK KIRIMAN</h3>
+                <input class="box" type="text" name="Masukin nomor resi" autocomplete="off" aria-required="true" placeholder="No Resi">
+                <button class="button button1" name="check-our-tarif">Tracking</button>
+            </div> 
+        </div> -->
+    </div>
+    </section>
+    <section>
+    <div class="grid-container">
+        <div class="grid-item-table">
+            <table id="admin">
+                <!-- <tr>
+                  <th>Origin</th>
+                  <th>Destination</th>
+                  <th>Price</th>
+                </tr>
+                <tr>
+                  <td>Peter</td>
+                  <td>Griffin</td>
+                  <td>$100</td>
+                </tr> -->
+            </table>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+    <div class="grid-container-footer"> 
+        <div class="grid-item-footer">
+            <p id="judul">KANTOR PUSAT</p>
+            <br>
+            <p>Jl. Tomang Raya No. 11
+                Jakarta Barat 11440
+                Indonesia
+            </p>
+            <br>
+            <p>Contact center. (62-21) 2927 7777
+            <br>
+                Office. (62-21) 566 6776
+            <br>
+                Fax. (62-21) 567 8787
+            <br>
+                Email. customercare@lisbonfoxdeliveri.com
+            </p>    
+        </div> 
+        <div class="grid-item-footer">
+            <p id="judul">PRODUK LAYANAN</p>
+            <br>
+            <p id="pcenter">Lisbon Express
+            <br>
+            Lisbon Logistic
+            </p>
+        </div>
+        <div class="grid-item-footer"> 
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-youtube"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
