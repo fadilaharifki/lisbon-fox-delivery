@@ -139,6 +139,16 @@
     height: 40px;
     background-color:red;}
 
+  #weight {
+    border-radius: 10px
+  }
+
+  #invalidData {
+    font-family: Verdana;
+    color: #f2f2f2;
+    text-align: center;
+  }
+
 
     /* Media Sosial */
 
