@@ -12,11 +12,6 @@ const order = []
 
 const cityList = ['Bandung', 'Jakarta', 'Semarang', 'Surabaya']
 
-let selectorTarif = document.getElementById("checkButton")
-const idAsal = document.getElementById("origin").value
-const idTujuan = document.getElementById("destination").value
-const idBerat = document.getElementById("weight").value
-
 // Function
 function tambahKota(asal, tujuan, tarif) {
     asal = capitalizeWord(asal)
@@ -125,17 +120,12 @@ function generateTarif(asal, tujuan, berat) {
     const price = cekTarif(asal, tujuan, berat)
     const origin = capitalizeWord(asal)
     const destination = capitalizeWord(tujuan)
-
-    // let pokemonName = document.createElement('h1')
-    // pokemonName.innerHTML = data[i].name
-    // pokemonName.addEventListener('click', clickName)
-    // divCard.appendChild(pokemonName)
+    berat = Number(berat)
 
     const divTable = document.getElementsByClassName('grid-item-table')[0]
     divTable.innerHTML = ''
 
     const table = document.createElement('table')
-    // table.addEventListener('click', clickName)
     divTable.appendChild(table)
 
     const tableTr = document.createElement('tr')
@@ -157,16 +147,10 @@ function generateTarif(asal, tujuan, berat) {
         tableTd.innerHTML = isi[i]
         tableIsi.appendChild(tableTd)
     }
-    document.getElementById('check-our-tarif').addEventListener('click',clickName)
 }
-// generateTarif('Jakarta', 'Surabaya', 3)
 
 function capitalizeWord(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function clickName(event) {
-    console.log(event.target)
 }
 
 
@@ -186,6 +170,9 @@ function clickName(event) {
 // console.log(order)
 // console.log(lacakOrder(7))
 
+// generateTarif('Jakarta', 'Surabaya', 3)
+
+
 
 /* [
     { city: [ 'bekasi', 'Jakarta' ], cost: '15000' },
@@ -195,25 +182,9 @@ function clickName(event) {
 
 
 // Invoke function
+let selectorTarif = document.getElementById("checkButton")
+
 generateCity(cityList)
-
-
-// console.log(idAsal,idTujuan,idBerat)
-
-// let pokemonName = document.createElement('h1')
-// pokemonName.innerHTML = data[i].name
-// pokemonName.addEventListener('click', clickName)
-// divCard.appendChild(pokemonName)
-
-
-// selectorTarif.onclick = function () { generateTarif(idAsal, idTujuan, idBerat) }
-
-// selectorTarif.addEventListener('click', generateTarif(idAsal,idTujuan,idBerat))
-// selectorTarif.onclick('click', generateTarif(idAsal,idTujuan,idBerat))
-// selectorTarif.addEventListener('click', console.log(idAsal,idTujuan,idBerat))
-
-// document.getElementById("check-our-tarif").addEventListener("click", generateTarif() {
-//     document.getElementById("demo").innerHTML = "Hello World";
-//   });
-
-// event listener cek tarif
+selectorTarif.addEventListener('click', function () {
+    generateTarif(document.getElementById("origin").value, document.getElementById("destination").value, document.getElementById("weight").value)
+})
